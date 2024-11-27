@@ -29,6 +29,7 @@ class CurrencyController
     public static function listRates(): void
     {
         $rates = Helpers::loadRatesJSON();
-        Helpers::sendResponse(['success' => true, 'rates' => $rates]);
+        $currencies = Helpers::loadCurrenciesJSON();
+        Helpers::sendResponse(['success' => true, 'rates' => $rates, 'currencies'=> $currencies]);
     }
 }
