@@ -4,9 +4,8 @@ require_once './controllers/CurrencyController.php';
 require_once './utils/Helpers.php';
 
 use Controllers\CurrencyController;
-use Utils\Helpers;
 
-$action = $_GET['action'] ?? null;
+$action = $_GET['action'] ?? '';
 
 switch (strtolower($action)) {
     case 'convert':
@@ -16,6 +15,6 @@ switch (strtolower($action)) {
         CurrencyController::listRates();
         break;
     default:
-        http_response_code(404);
-        Helpers::sendResponse(['success' => false, 'message' => 'Endpoint não encontrado.']);
+        include 'views/index.php';
+        break;
 }
