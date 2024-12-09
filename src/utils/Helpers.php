@@ -4,28 +4,6 @@ namespace Utils;
 
 class Helpers
 {
-    public static function loadRatesJSON(): array
-    {
-        $jsonFilePath = './data/rates.json';
-        if (!file_exists($jsonFilePath)) {
-            self::sendResponse(['success' => false, 'message' => 'Arquivo de taxas de câmbio não encontrado.']);
-        }
-
-        $jsonRawData = file_get_contents($jsonFilePath);
-        return json_decode($jsonRawData, true);
-    }
-
-    public static function loadCurrenciesJSON(): array
-    {
-        $jsonFilePath = './data/currencies.json';
-        if (!file_exists($jsonFilePath)) {
-            self::sendResponse(['success' => false, 'message' => 'Arquivo de moedas não encontrado.']);
-        }
-
-        $jsonRawData = file_get_contents($jsonFilePath);
-        return json_decode($jsonRawData, true);
-    }
-
     public static function sendResponse(array $jsonBody): never
     {
         header('Content-Type: application/json');

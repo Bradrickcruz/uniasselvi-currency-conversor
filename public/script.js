@@ -18,11 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function populateCurrencySelect(selectElement, rates) {
-    Object.keys(rates).forEach((currency) => {
+  function populateCurrencySelect(selectElement, currencies) {
+    currencies.forEach((currency) => {
+      console.log(currency);
       const option = document.createElement('option');
-      option.value = currency;
-      option.textContent = rates[currency];
+      option.value = currency.code;
+      option.textContent = currency.name;
       selectElement.appendChild(option);
     });
   }

@@ -1,20 +1,21 @@
 <?php
 
-require_once './controllers/CurrencyController.php';
-require_once './utils/Helpers.php';
+require_once './src/controllers/CurrencyController.php';
+require_once './src/utils/Helpers.php';
 
 use Controllers\CurrencyController;
+$controller = new CurrencyController();
 
 $action = $_GET['action'] ?? '';
 
 switch (strtolower($action)) {
     case 'convert':
-        CurrencyController::convert();
+        $controller->convert();
         break;
     case 'list':
-        CurrencyController::listRates();
+        $controller->listCurrencies();
         break;
     default:
-        include 'views/index.php';
+        include 'src/views/index.php';
         break;
 }
