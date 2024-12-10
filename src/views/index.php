@@ -29,9 +29,12 @@
 
             <button type="submit">Converter</button>
         </form>
+    </div>
 
-        <div id="result-container" class="hidden">
-            <p id="result"></p>
+    <div id="result-container" class="hidden container">
+        <span class="result-title">Resultado</span>
+        <div id="result">
+            <p></p>
         </div>
     </div>
     <script src="/public/script.js"></script>

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fromCurrencySelect = document.getElementById('from-currency');
   const toCurrencySelect = document.getElementById('to-currency');
   const resultContainer = document.getElementById('result-container');
-  const resultText = document.getElementById('result');
+  const resultText = document.querySelector('#result p');
 
   async function loadRates() {
     try {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(currency);
       const option = document.createElement('option');
       option.value = currency.code;
-      option.textContent = currency.name;
+      option.textContent = `${currency.name} (${currency.symbol})`;
       selectElement.appendChild(option);
     });
   }
@@ -50,9 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!data.success) throw new Error(data.message);
 
-        resultText.textContent = `${amount} ${fromCurrency} = ${data.converted.toFixed(
-          2
-        )} ${toCurrency}`;
+        resultText.textContent = `${formatCurrency(amount,fromCurrency)} = ${formatCurrency(
+          data.converted.toFixed(2),
+          toCurrency
+        )}`;
         resultContainer.classList.remove('hidden');
       } catch (error) {
         alert('Erro ao converter moedas: ' + error.message);
@@ -61,3 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadRates();
 });
+
+function formatCurrency(value, currency) {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency,
+  }).format(value);
+}
