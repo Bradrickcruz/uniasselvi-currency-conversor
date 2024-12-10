@@ -1,9 +1,11 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background: rgb(246, 236, 82);
+  background: linear-gradient(14deg, rgba(246, 236, 82, 1) 0%, rgba(42, 209, 50, 1) 100%);
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -33,7 +35,9 @@ label {
   font-weight: bold;
 }
 
-input, select, button {
+input,
+select,
+button {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -43,6 +47,8 @@ input, select, button {
 
 button {
   background-color: #4caf50;
+  font-weight: bold;
+  font-size: 1.25rem;
   color: white;
   border: none;
   cursor: pointer;
@@ -57,15 +63,26 @@ button:hover {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  padding: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #f1f1f1;
+  font-size: 1.25rem;
+  flex-direction: column;
 }
 
-#result-container p {
-  justify-content: center;
+#result-container div#result {
+  width: 100%;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  height: 35px;
+}
+
+.result-title {
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: bold;
+  align-self: start;
 }
 
 .hidden {
